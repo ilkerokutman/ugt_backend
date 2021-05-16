@@ -48,7 +48,6 @@ Else
     Set rs = ba.Execute(sqll)
         if Not rs.eof Then
             if rs("success") = True Then
-                Results.add "success", true
                 Results.add "validUntil", rs("validUntil").value
                 Results.add "accessToken", rs("accessToken").value
                 Results.add "message", rs("message").value

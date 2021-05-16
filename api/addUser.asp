@@ -39,23 +39,20 @@ Dim Results
 Set Results = Server.CreateObject("Scripting.Dictionary")
 
 if IsEmpty(ob("email")) Or IsEmpty(ob("role")) Or IsEmpty(ob("firstName")) Or IsEmpty(ob("lastName")) Then
-    Results.add "success", false
-    Results.add "error", true
-    Results.add "message", "Lütfen tüm alanları doldurunuz"
-    Results.add "statusCode", 201
+    jSuccess = false
+    jMessage = "Lütfen tüm alanları doldurunuz"
+    jStatus =  201
 Else
     Dim sqll : sqll = "EXEC [spAddUser] @firstName='" & ob("firstName") & "', @lastName='" & ob("lastName") & "', @email='" & ob("email") & "', @role='" & ob("role") & "' "
     Set rs = ba.Execute(sqll)
         if Not rs.eof Then
             if rs("success") = True Then
-                Results.add "success", true
-                if (ob("role") = "STD" Then
-                    Results.add "user", ba.Execute("SELECT TOP 1 * FROM [vStudent] WHERE userId='" & rs("userId") & "' ")
-                Else
-                    Results.add "user", ba.Execute("SELECT TOP 1 * FROM [vLecturers] WHERE userId='" & rs("userId") & "' ")
-                End if
+                Results.add "userId", Replace(Replace(rs("data").value, "{", ""), "}", "")
+                jMessage = rs("message")                
             Else 
-
+                jSuccess = false
+                jMessage = rs("message")
+                jStatus =  203
             End if
         Else
 
@@ -70,6 +67,6 @@ data.add "success", jSuccess
 data.add "statusCode", jStatus
 data.add "processTime", dbDateTime(Now())
 data.add "message", Replace(jMessage, """", "\""")
-Response.Write((new JSON).toJSON("responseData", data, false))
+Response.Write((new JSON).toJSON(empty, data, false))
 %>
 <!--#include file = "../common/_sqlk.asp"-->

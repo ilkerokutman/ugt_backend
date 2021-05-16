@@ -61,14 +61,14 @@ BEGIN
 		END
 		ELSE 
 		BEGIN 
-			SELECT CAST(0 AS bit) AS success, CAST(1 AS bit) AS error, 'Yetkisiz kullanici' AS [message]
+			SELECT CAST(0 AS bit) AS success, CAST(1 AS bit) AS error, 'Yetkisiz kullanıcı' AS [message]
 		END
 
 
 	END
 	ELSE
 	BEGIN
-		SELECT CAST(0 AS bit) AS success, CAST(1 AS bit) AS error, 'Hatali kullanici adi ve/veya sifre' AS [message]
+		SELECT CAST(0 AS bit) AS success, CAST(1 AS bit) AS error, 'Hatalı kullanıcı adı veya şifre' AS [message]
 	END
 END
 GO
