@@ -31,6 +31,10 @@ If Request.TotalBytes > 0 Then
     Set ob = j2.Decode(jsonString)
 End if
 
+
+Dim accessToken : accessToken = Replace(Request.ServerVariables("HTTP_Authorization"), "Bearer ", "")
+
+
 Set data = Server.CreateObject("Scripting.Dictionary")
 Dim jStatus : jStatus = 200
 Dim jSuccess : jSuccess = True
@@ -38,41 +42,25 @@ Dim jMessage : jMessage = ""
 Dim Results
 Set Results = Server.CreateObject("Scripting.Dictionary")
 
-if IsEmpty(ob("email")) Or IsEmpty(ob("password")) Or Len(ob("email")) < 1 Or Len(ob("password")) < 1 Then
-    jSuccess =  false
+if IsEmpty(ob("name")) Then
+    jSuccess = false
     jMessage = "Lütfen tüm alanları doldurunuz"
-    jStatus = 201
-Else 
-    On Error resume Next
-    Dim sqll : sqll = "EXEC [spSignin] @username='" & ob("email") & "', @password='" & ob("password") & "'"
+    jStatus =  201
+Else
+    Dim sqll : sqll = "EXEC [spAddDepartments] @accessToken='" & accessToken & "', @name='" & ob("name") & "' "
     Set rs = ba.Execute(sqll)
         if Not rs.eof Then
             if rs("success") = True Then
-                Results.add "validUntil", rs("validUntil").value
-                Results.add "accessToken", rs("accessToken").value
-                Results.add "message", rs("message").value
-                Results.add "userId", cleanGuid(rs("userId").value)
-                Results.add "profileId", cleanGuid(rs("profileId").value)
-                Results.add "fullName", rs("firstName").value & " " & rs("lastName").value
-                
-                Results.add "role", rs("role").value
-                if role = "STU" Then
-                    Results.add "profile", ba.Execute("SELECT TOP 1 * FROM [StudentDetails] WHERE id='" & cleanGuid(rs("profileId").value) & "' ")
-                Elseif role = "ADM" Or role = "LEC" Then
-                    Results.add "profile", ba.Execute("SELECT TOP 1 * FROM [LecturerDetails] WHERE id='" & cleanGuid(rs("profileId").value) & "' ")
-                End if
+                Results.add "id", Replace(Replace(rs("data").value, "{", ""), "}", "")
             Else 
-                jSuccess =  false
-                jMessage = rs("message").value
-                jStatus = 203
+                jSuccess = false
+                jMessage = "Kayıt başarısız"
+                jStatus =  203
             End if
         Else
-            jSuccess =  false
-            jMessage =  "Hatalı şifre veya Eposta adresi" 
-            jStatus = 202
+
         End if
     Set rs = Nothing
-
 End if
 
 

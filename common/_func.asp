@@ -1,4 +1,8 @@
 <%
+Function cleanGuid(guid)
+	cleanGuid = Replace(Replace(guid, "}", ""), "{", "")
+End Function
+
 Function bitToInt(b)
 Dim r
 	if IsNull(b) Then r = 0
