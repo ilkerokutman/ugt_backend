@@ -42,30 +42,14 @@ Dim jMessage : jMessage = ""
 Dim Results
 Set Results = Server.CreateObject("Scripting.Dictionary")
 
-if IsEmpty(ob("name")) Then
-    jSuccess = false
-    jMessage = "Lütfen tüm alanları doldurunuz"
-    jStatus =  201
-Else
-    Dim sqll : sqll = "EXEC [spAddFaculty] @accessToken='" & accessToken & "', @name='" & ob("name") & "' "
-    Set rs = ba.Execute(sqll)
-        if Not rs.eof Then
-            if rs("success") = True Then
-                Results.add "id", Replace(Replace(rs("data").value, "{", ""), "}", "")
-            Else 
-                jSuccess = false
-                jMessage = "Kayıt başarısız"
-                jStatus =  203
-            End if
-        Else
 
-        End if
-    Set rs = Nothing
-End if
+    Dim sqll : sqll = "EXEC [spAddDepartment] @accessToken='" & accessToken & "', @name='" & ob("name") & "' "
+    data.add "data", ba.Execute(sqll)    
 
 
 
-data.add "data", Results
+
+
 data.add "success", jSuccess
 data.add "statusCode", jStatus
 data.add "processTime", dbDateTime(Now())
