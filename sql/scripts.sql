@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [ULUDAG_ASSIGNMENT]    Script Date: 2021-05-22 23:17:38 ******/
+/****** Object:  Database [ULUDAG_ASSIGNMENT]    Script Date: 2021-06-10 01:47:25 ******/
 CREATE DATABASE [ULUDAG_ASSIGNMENT]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -75,7 +75,7 @@ ALTER DATABASE [ULUDAG_ASSIGNMENT] SET DELAYED_DURABILITY = DISABLED
 GO
 USE [ULUDAG_ASSIGNMENT]
 GO
-/****** Object:  Table [dbo].[Activities]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[Activities]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -95,7 +95,7 @@ CREATE TABLE [dbo].[Activities](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Assignees]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[Assignees]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -121,7 +121,7 @@ CREATE TABLE [dbo].[Assignees](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[AssignmentPool]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[AssignmentPool]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -147,7 +147,7 @@ CREATE TABLE [dbo].[AssignmentPool](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Assignments]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[Assignments]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -178,7 +178,7 @@ CREATE TABLE [dbo].[Assignments](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[AssignmentTypes]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[AssignmentTypes]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -198,7 +198,7 @@ CREATE TABLE [dbo].[AssignmentTypes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Departments]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[Departments]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -207,7 +207,7 @@ CREATE TABLE [dbo].[Departments](
 	[id] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
 	[name] [nvarchar](max) NULL,
 	[listOrder] [int] NULL,
-	[status] [int] NOT NULL,
+	[statusId] [int] NOT NULL,
 	[createdOn] [datetime] NOT NULL,
 	[createdBy] [uniqueidentifier] NOT NULL,
 	[modifiedOn] [datetime] NULL,
@@ -218,7 +218,7 @@ CREATE TABLE [dbo].[Departments](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Faculties]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[Faculties]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -227,7 +227,7 @@ CREATE TABLE [dbo].[Faculties](
 	[id] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
 	[name] [nvarchar](max) NULL,
 	[listOrder] [int] NULL,
-	[status] [int] NOT NULL,
+	[statusId] [int] NOT NULL,
 	[createdOn] [datetime] NOT NULL,
 	[createdBy] [uniqueidentifier] NOT NULL,
 	[modifiedOn] [datetime] NULL,
@@ -238,7 +238,7 @@ CREATE TABLE [dbo].[Faculties](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LecturerDetails]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[LecturerDetails]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -259,7 +259,7 @@ CREATE TABLE [dbo].[LecturerDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Lectures]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[Lectures]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -267,6 +267,12 @@ GO
 CREATE TABLE [dbo].[Lectures](
 	[id] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
 	[name] [nvarchar](max) NOT NULL,
+	[statusId] [int] NOT NULL,
+	[listOrder] [int] NOT NULL,
+	[createdOn] [datetime] NOT NULL,
+	[createdBy] [nvarchar](max) NULL,
+	[modifiedOn] [datetime] NOT NULL,
+	[modifiedBy] [nvarchar](max) NULL,
 	[description] [nvarchar](max) NULL,
 	[code] [nvarchar](max) NOT NULL,
 	[credits] [int] NOT NULL,
@@ -276,16 +282,13 @@ CREATE TABLE [dbo].[Lectures](
 	[program] [uniqueidentifier] NOT NULL,
 	[semester] [int] NOT NULL,
 	[academicYear] [int] NOT NULL,
-	[createdOn] [datetime] NOT NULL,
-	[modifiedOn] [datetime] NOT NULL,
-	[status] [int] NOT NULL,
  CONSTRAINT [PK_Lectures] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LectureStudents]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[LectureStudents]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -306,7 +309,7 @@ CREATE TABLE [dbo].[LectureStudents](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProgramsAndDivisions]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[ProgramsAndDivisions]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -315,7 +318,7 @@ CREATE TABLE [dbo].[ProgramsAndDivisions](
 	[id] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
 	[name] [nvarchar](max) NULL,
 	[listOrder] [int] NULL,
-	[status] [int] NOT NULL,
+	[statusId] [int] NOT NULL,
 	[createdOn] [datetime] NOT NULL,
 	[createdBy] [uniqueidentifier] NOT NULL,
 	[modifiedOn] [datetime] NULL,
@@ -326,7 +329,7 @@ CREATE TABLE [dbo].[ProgramsAndDivisions](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PropertyValues]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[PropertyValues]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -343,7 +346,7 @@ CREATE TABLE [dbo].[PropertyValues](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[StudentDetails]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[StudentDetails]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -368,7 +371,7 @@ CREATE TABLE [dbo].[StudentDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[StudentLectureGroups]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[StudentLectureGroups]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -389,7 +392,7 @@ CREATE TABLE [dbo].[StudentLectureGroups](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UserLogs]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[UserLogs]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -407,7 +410,7 @@ CREATE TABLE [dbo].[UserLogs](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UserRoles]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[UserRoles]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -424,7 +427,7 @@ CREATE TABLE [dbo].[UserRoles](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -447,7 +450,7 @@ CREATE TABLE [dbo].[Users](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UserTokens]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  Table [dbo].[UserTokens]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -465,7 +468,7 @@ CREATE TABLE [dbo].[UserTokens](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  View [dbo].[vLecturers]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  View [dbo].[vLecturers]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -479,7 +482,7 @@ FROM            dbo.LecturerDetails AS ld LEFT OUTER JOIN
                          dbo.Departments AS d ON ld.department = d.id LEFT OUTER JOIN
                          dbo.ProgramsAndDivisions AS p ON ld.program = p.id
 GO
-/****** Object:  View [dbo].[vStudents]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  View [dbo].[vStudents]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -527,7 +530,7 @@ ALTER TABLE [dbo].[AssignmentTypes] ADD  CONSTRAINT [DF_AssignmentTypes_createdO
 GO
 ALTER TABLE [dbo].[Departments] ADD  CONSTRAINT [DF_Departments_id]  DEFAULT (newid()) FOR [id]
 GO
-ALTER TABLE [dbo].[Departments] ADD  CONSTRAINT [DF_Departments_status]  DEFAULT ((0)) FOR [status]
+ALTER TABLE [dbo].[Departments] ADD  CONSTRAINT [DF_Departments_status]  DEFAULT ((0)) FOR [statusId]
 GO
 ALTER TABLE [dbo].[Departments] ADD  CONSTRAINT [DF_Departments_createdOn]  DEFAULT (getdate()) FOR [createdOn]
 GO
@@ -535,7 +538,7 @@ ALTER TABLE [dbo].[Faculties] ADD  CONSTRAINT [DF_Faculties_id]  DEFAULT (newid(
 GO
 ALTER TABLE [dbo].[Faculties] ADD  CONSTRAINT [DF_Faculties_listOrder]  DEFAULT ((100)) FOR [listOrder]
 GO
-ALTER TABLE [dbo].[Faculties] ADD  CONSTRAINT [DF_Faculties_status]  DEFAULT ((0)) FOR [status]
+ALTER TABLE [dbo].[Faculties] ADD  CONSTRAINT [DF_Faculties_status]  DEFAULT ((0)) FOR [statusId]
 GO
 ALTER TABLE [dbo].[Faculties] ADD  CONSTRAINT [DF_Table_1_createdOn1]  DEFAULT (getdate()) FOR [createdOn]
 GO
@@ -549,17 +552,19 @@ ALTER TABLE [dbo].[LecturerDetails] ADD  CONSTRAINT [DF_Lecturers_status]  DEFAU
 GO
 ALTER TABLE [dbo].[Lectures] ADD  CONSTRAINT [DF_Lectures_id]  DEFAULT (newid()) FOR [id]
 GO
-ALTER TABLE [dbo].[Lectures] ADD  CONSTRAINT [DF_Lectures_credits]  DEFAULT ((0)) FOR [credits]
+ALTER TABLE [dbo].[Lectures] ADD  CONSTRAINT [DF_Lectures_status]  DEFAULT ((0)) FOR [statusId]
 GO
-ALTER TABLE [dbo].[Lectures] ADD  CONSTRAINT [DF_Lectures_semester]  DEFAULT ((1)) FOR [semester]
-GO
-ALTER TABLE [dbo].[Lectures] ADD  CONSTRAINT [DF_Lectures_academicYear]  DEFAULT ((0)) FOR [academicYear]
+ALTER TABLE [dbo].[Lectures] ADD  CONSTRAINT [DF_Lectures_listOrder]  DEFAULT ((100)) FOR [listOrder]
 GO
 ALTER TABLE [dbo].[Lectures] ADD  CONSTRAINT [DF_Lectures_createdOn]  DEFAULT (getdate()) FOR [createdOn]
 GO
 ALTER TABLE [dbo].[Lectures] ADD  CONSTRAINT [DF_Lectures_modifiedOn]  DEFAULT (getdate()) FOR [modifiedOn]
 GO
-ALTER TABLE [dbo].[Lectures] ADD  CONSTRAINT [DF_Lectures_status]  DEFAULT ((0)) FOR [status]
+ALTER TABLE [dbo].[Lectures] ADD  CONSTRAINT [DF_Lectures_credits]  DEFAULT ((0)) FOR [credits]
+GO
+ALTER TABLE [dbo].[Lectures] ADD  CONSTRAINT [DF_Lectures_semester]  DEFAULT ((1)) FOR [semester]
+GO
+ALTER TABLE [dbo].[Lectures] ADD  CONSTRAINT [DF_Lectures_academicYear]  DEFAULT ((0)) FOR [academicYear]
 GO
 ALTER TABLE [dbo].[LectureStudents] ADD  CONSTRAINT [DF_LectureStudents_id]  DEFAULT (newid()) FOR [id]
 GO
@@ -577,7 +582,7 @@ ALTER TABLE [dbo].[LectureStudents] ADD  CONSTRAINT [DF_LectureStudents_status] 
 GO
 ALTER TABLE [dbo].[ProgramsAndDivisions] ADD  CONSTRAINT [DF_ProgramsAndDivisions_id]  DEFAULT (newid()) FOR [id]
 GO
-ALTER TABLE [dbo].[ProgramsAndDivisions] ADD  CONSTRAINT [DF_ProgramsAndDivisions_status]  DEFAULT ((0)) FOR [status]
+ALTER TABLE [dbo].[ProgramsAndDivisions] ADD  CONSTRAINT [DF_ProgramsAndDivisions_status]  DEFAULT ((0)) FOR [statusId]
 GO
 ALTER TABLE [dbo].[ProgramsAndDivisions] ADD  CONSTRAINT [DF_ProgramsAndDivisions_createdOn]  DEFAULT (getdate()) FOR [createdOn]
 GO
@@ -625,7 +630,7 @@ ALTER TABLE [dbo].[UserTokens] ADD  CONSTRAINT [DF_UserTokens_isValid]  DEFAULT 
 GO
 ALTER TABLE [dbo].[UserTokens] ADD  CONSTRAINT [DF_UserTokens_createdOn]  DEFAULT (getdate()) FOR [createdOn]
 GO
-/****** Object:  StoredProcedure [dbo].[spAddDepartments]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  StoredProcedure [dbo].[spAddDepartment]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -635,7 +640,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [dbo].[spAddDepartments] 
+CREATE PROCEDURE [dbo].[spAddDepartment] 
 	-- Add the parameters for the stored procedure here
 	@accessToken nvarchar(max),
 	@name nvarchar(max)
@@ -649,14 +654,45 @@ BEGIN
 
 	INSERT INTO Departments ([name], [createdBy]) VALUES (@name, @userId)
 
-	DECLARE @facultyId uniqueIdentifier = (SELECT TOP 1 id FROM Departments WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC)
+	DECLARE @id uniqueIdentifier = (SELECT TOP 1 id FROM Departments WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC)
+	SELECT CAST(1 AS bit) AS success, @id AS [data]
+
+	--SELECT TOP 1 * FROM Faculties WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spAddDivisionAndProgram]    Script Date: 2021-06-10 01:47:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spAddDivisionAndProgram] 
+	-- Add the parameters for the stored procedure here
+	@accessToken nvarchar(max),
+	@name nvarchar(max)
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @userId uniqueIdentifier =  (SELECT TOP 1 id FROM [UserTokens] WHERE accessToken = @accessToken AND isValid = 1 AND DateDiff(MINUTE, getDate(), validUntil) > 0)
+
+	INSERT INTO ProgramsAndDivisions ([name], [createdBy]) VALUES (@name, @userId)
+
+	DECLARE @facultyId uniqueIdentifier = (SELECT TOP 1 id FROM ProgramsAndDivisions WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC)
 	SELECT CAST(1 AS bit) AS success, @facultyId AS [data]
 
 	--SELECT TOP 1 * FROM Faculties WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spAddFaculty]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  StoredProcedure [dbo].[spAddFaculty]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -680,14 +716,54 @@ BEGIN
 
 	INSERT INTO Faculties ([name], [createdBy]) VALUES (@name, @userId)
 
-	DECLARE @facultyId uniqueIdentifier = (SELECT TOP 1 id FROM Faculties WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC)
-	SELECT CAST(1 AS bit) AS success, @facultyId AS [data]
+	DECLARE @id uniqueIdentifier = (SELECT TOP 1 id FROM Faculties WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC)
+	SELECT CAST(1 AS bit) AS success, @id AS [data]
 
 	--SELECT TOP 1 * FROM Faculties WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spAddLecturer]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  StoredProcedure [dbo].[spAddLecture]    Script Date: 2021-06-10 01:47:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spAddLecture] 
+	-- Add the parameters for the stored procedure here
+	@accessToken nvarchar(max),
+	@name nvarchar(max),
+	@description nvarchar(max),
+	@code nvarchar(max),
+	@credits int,
+	@lecturer nvarchar(max),
+	@department nvarchar(max),
+	@unit nvarchar(max),
+	@program nvarchar(max),
+	@semester int,
+	@academicYear int
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @userId uniqueIdentifier =  (SELECT TOP 1 id FROM [UserTokens] WHERE accessToken = @accessToken AND isValid = 1 AND DateDiff(MINUTE, getDate(), validUntil) > 0)
+
+	INSERT INTO Lectures([name], [createdBy], [description], [code], [credits], [lecturer], [department], [unit], [program], [semester], [academicYear]) VALUES (@name, @userId, @description, @code, @credits, @lecturer, @department, @unit, @program, @semester, @academicYear)
+
+	DECLARE @id uniqueIdentifier = (SELECT TOP 1 id FROM Lectures WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC)
+	SELECT CAST(1 AS bit) AS success, @id AS [data]
+
+	--SELECT TOP 1 * FROM Faculties WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spAddLecturer]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -722,38 +798,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spAddProgramsAndDivisions]    Script Date: 2021-05-22 23:17:39 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
--- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- =============================================
-CREATE PROCEDURE [dbo].[spAddProgramsAndDivisions] 
-	-- Add the parameters for the stored procedure here
-	@accessToken nvarchar(max),
-	@name nvarchar(max)
-
-AS
-BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
-	DECLARE @userId uniqueIdentifier =  (SELECT TOP 1 id FROM [UserTokens] WHERE accessToken = @accessToken AND isValid = 1 AND DateDiff(MINUTE, getDate(), validUntil) > 0)
-
-	INSERT INTO ProgramsAndDivisions ([name], [createdBy]) VALUES (@name, @userId)
-
-	DECLARE @facultyId uniqueIdentifier = (SELECT TOP 1 id FROM ProgramsAndDivisions WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC)
-	SELECT CAST(1 AS bit) AS success, @facultyId AS [data]
-
-	--SELECT TOP 1 * FROM Faculties WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC
-
-END
-GO
-/****** Object:  StoredProcedure [dbo].[spAddUser]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  StoredProcedure [dbo].[spAddUser]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -790,7 +835,7 @@ BEGIN
 	END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spCheckUser]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  StoredProcedure [dbo].[spCheckUser]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -815,7 +860,123 @@ BEGIN
 	AND DateDiff(MINUTE, getDate(), validUntil) > 0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetLecturer]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  StoredProcedure [dbo].[spDeleteFaculty]    Script Date: 2021-06-10 01:47:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spDeleteFaculty] 
+	-- Add the parameters for the stored procedure here
+	@accessToken nvarchar(max),
+	@id nvarchar(max)
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	
+	IF EXISTS(  (SELECT TOP 1 id FROM [UserTokens] WHERE accessToken = @accessToken AND isValid = 1 AND DateDiff(MINUTE, getDate(), validUntil) > 0)) 
+	BEGIN
+		DELETE FROM Faculties WHERE id=@id
+		SELECT CAST(1 AS bit) AS success, @id AS [data]
+	END
+	ELSE
+		BEGIN
+		SELECT CAST(0 AS bit) AS success, @id AS [data]
+	END
+
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spGetFaculties]    Script Date: 2021-06-10 01:47:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spGetFaculties] 
+	-- Add the parameters for the stored procedure here
+	@accessToken nvarchar(max)
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @userId uniqueIdentifier =  (SELECT TOP 1 id FROM [UserTokens] WHERE accessToken = @accessToken AND isValid = 1 AND DateDiff(MINUTE, getDate(), validUntil) > 0)
+
+	SELECT TOP 1 * FROM Faculties ORDER BY listOrder ASC
+
+	--SELECT TOP 1 * FROM Faculties WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spGetFaculty]    Script Date: 2021-06-10 01:47:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spGetFaculty] 
+	-- Add the parameters for the stored procedure here
+	@accessToken nvarchar(max),
+	@id nvarchar(max)
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @userId uniqueIdentifier =  (SELECT TOP 1 id FROM [UserTokens] WHERE accessToken = @accessToken AND isValid = 1 AND DateDiff(MINUTE, getDate(), validUntil) > 0)
+
+	SELECT TOP 1 * FROM Faculties WHERE id=@id
+
+	--SELECT TOP 1 * FROM Faculties WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spGetFacultyList]    Script Date: 2021-06-10 01:47:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spGetFacultyList] 
+	-- Add the parameters for the stored procedure here
+	@accessToken nvarchar(max)
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @userId uniqueIdentifier =  (SELECT TOP 1 id FROM [UserTokens] WHERE accessToken = @accessToken AND isValid = 1 AND DateDiff(MINUTE, getDate(), validUntil) > 0)
+
+	SELECT TOP 100 * FROM Faculties ORDER BY [name]
+
+	--SELECT TOP 1 * FROM Faculties WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spGetLecturer]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -856,7 +1017,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetLecturerByUserId]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  StoredProcedure [dbo].[spGetLecturerByUserId]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -890,7 +1051,75 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetStudentByUserId]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  StoredProcedure [dbo].[spGetLecturers]    Script Date: 2021-06-10 01:47:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spGetLecturers]
+	-- Add the parameters for the stored procedure here
+	@accessToken nvarchar(max),
+	@id nvarchar(max) = null
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @userId uniqueIdentifier =  (SELECT TOP 1 id FROM [UserTokens] WHERE accessToken = @accessToken AND isValid = 1 AND DateDiff(MINUTE, getDate(), validUntil) > 0)
+
+	IF @userId IS NULL
+	BEGIN
+		SELECT CAST(0 AS bit) as success
+	END
+	ELSE
+	BEGIN
+		IF @id IS NULL
+		BEGIN
+			SELECT TOP 1000 * FROM vLecturers
+		END
+		ELSE
+		BEGIN
+			SELECT TOP 1000 * FROM vLecturers WHERE id = @id
+		END
+	END
+
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spGetLectures]    Script Date: 2021-06-10 01:47:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spGetLectures] 
+	-- Add the parameters for the stored procedure here
+	@accessToken nvarchar(max)
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @userId uniqueIdentifier =  (SELECT TOP 1 id FROM [UserTokens] WHERE accessToken = @accessToken AND isValid = 1 AND DateDiff(MINUTE, getDate(), validUntil) > 0)
+
+	SELECT TOP 1 * FROM Lectures ORDER BY listOrder ASC
+
+	--SELECT TOP 1 * FROM Faculties WHERE [name]=@name AND createdBy=@userId ORDER BY createdOn ASC
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spGetStudentByUserId]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -927,7 +1156,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetUser]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  StoredProcedure [dbo].[spGetUser]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -963,7 +1192,93 @@ BEGIN
 		END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spSignin]    Script Date: 2021-05-22 23:17:39 ******/
+/****** Object:  StoredProcedure [dbo].[spSaveFaculty]    Script Date: 2021-06-10 01:47:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spSaveFaculty] 
+	-- Add the parameters for the stored procedure here
+	@accessToken nvarchar(max),
+	@id nvarchar(max),
+	@name nvarchar(max),
+	@statusId int
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @userId uniqueIdentifier =  (SELECT TOP 1 id FROM [UserTokens] WHERE accessToken = @accessToken AND isValid = 1 AND DateDiff(MINUTE, getDate(), validUntil) > 0)
+
+	UPDATE Faculties 
+	SET [modifiedBy]=@userId, 
+		[modifiedOn]=GETDATE(), 
+		[name]=@name, 
+		[statusId]=@statusId
+	WHERE [id]=@id
+
+	SELECT TOP 1 * FROM Faculties WHERE [id]=@id
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spSaveLecture]    Script Date: 2021-06-10 01:47:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spSaveLecture] 
+	-- Add the parameters for the stored procedure here
+	@accessToken nvarchar(max),
+	@id nvarchar(max),
+	@name nvarchar(max),
+	@description nvarchar(max),
+	@code nvarchar(max),
+	@credits int,
+	@lecturer nvarchar(max),
+	@department nvarchar(max),
+	@unit nvarchar(max),
+	@program nvarchar(max),
+	@semester int,
+	@academicYear int
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @userId uniqueIdentifier =  (SELECT TOP 1 id FROM [UserTokens] WHERE accessToken = @accessToken AND isValid = 1 AND DateDiff(MINUTE, getDate(), validUntil) > 0)
+
+	UPDATE Lectures 
+	SET [modifiedBy]=@userId, 
+		[modifiedOn]=GETDATE(), 
+		[name]=@name, 
+		[description]=@description, 
+		[code]=@code, 
+		[credits]=@credits, 
+		[lecturer]=@lecturer, 
+		[department]=@department, 
+		[unit]=@unit, 
+		[program]=@program, 
+		[semester]=@semester, 
+		[academicYear]=@academicYear 
+	WHERE [id]=@id
+
+	SELECT TOP 1 * FROM Lectures WHERE [id]=@id
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spSignin]    Script Date: 2021-06-10 01:47:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

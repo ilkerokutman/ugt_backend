@@ -43,7 +43,7 @@ Dim Results
 Set Results = Server.CreateObject("Scripting.Dictionary")
 
 
-    Dim sqll : sqll = "EXEC [spGetFaculties] @accessToken='" & accessToken & "' "
+    Dim sqll : sqll = "EXEC [spGetFacultyList] @accessToken='" & accessToken & "' "
     data.add "data", ba.Execute(sqll)    
 
 
