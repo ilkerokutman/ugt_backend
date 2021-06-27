@@ -42,14 +42,31 @@ Dim jMessage : jMessage = ""
 Dim Results
 Set Results = Server.CreateObject("Scripting.Dictionary")
 
+if IsEmpty(ob("email")) Then
+    jSuccess = false
+    jMessage = "Lütfen tüm alanları doldurunuz"
+    jStatus =  201
+Else
+    Dim sqll : sqll = "EXEC [spAddStudent] @accessToken='" & accessToken & "', @firstName='" & ob("firstName") & "', @lastName='" & ob("lastName") & "', @role='" & cleanGuid(ob("role")) & "', @phone='" & ob("phone") & "', @password='" & ob("password") & "', @email='" & ob("email") & "', @programId='" & cleanGuid(ob("programId")) & "',  @studentNumber='" & ob("studentNumber") & "', @entranceDate='" & ob("entranceDate") & "', @yearOfBirth='" & ob(" yearOfBirth") & "', @grade='" & ob("grade") & "' "
+    jMessage = sqll
+    Set rs = ba.Execute(sqll)
+        if Not rs.eof Then
+            if rs("success") = True Then
+                Results.add "id", Replace(Replace(rs("data").value, "{", ""), "}", "")
+            Else 
+                jSuccess = false
+                jMessage = "Kayıt başarısız"
+                jStatus =  203
+            End if
+        Else
 
-    Dim sqll : sqll = "EXEC [spAddLecture] @accessToken='" & accessToken & "', @name='" & ob("name") & "', @description='" & ob("description") & "', @code='" & ob("code") & "', @lecturer='" & cleanGuid(ob("lecturer")) & "', @program='" & cleanGuid(ob("program")) & "', @credits='" & ob("credits") & "', @semester='" & ob("semester") & "', @academicYear='" & ob("academicYear") & "' "
-    data.add "data", ba.Execute(sqll)    
+        End if
+    Set rs = Nothing
+End if
 
 
 
-
-
+data.add "data", Results
 data.add "success", jSuccess
 data.add "statusCode", jStatus
 data.add "processTime", dbDateTime(Now())

@@ -42,10 +42,14 @@ Dim jMessage : jMessage = ""
 Dim Results
 Set Results = Server.CreateObject("Scripting.Dictionary")
 
-
-    Dim sqll : sqll = "EXEC [spAddLecture] @accessToken='" & accessToken & "', @name='" & ob("name") & "', @description='" & ob("description") & "', @code='" & ob("code") & "', @lecturer='" & cleanGuid(ob("lecturer")) & "', @program='" & cleanGuid(ob("program")) & "', @credits='" & ob("credits") & "', @semester='" & ob("semester") & "', @academicYear='" & ob("academicYear") & "' "
+if IsEmpty(ob("id")) Then
+    jSuccess = false
+    jMessage = "Lütfen tüm alanları doldurunuz"
+    jStatus =  201
+Else
+    Dim sqll : sqll = "EXEC [spGetStudent] @accessToken='" & accessToken & "', @id='" & ob("id") & "' "
     data.add "data", ba.Execute(sqll)    
-
+End if
 
 
 

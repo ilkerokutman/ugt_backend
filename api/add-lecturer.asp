@@ -42,12 +42,13 @@ Dim jMessage : jMessage = ""
 Dim Results
 Set Results = Server.CreateObject("Scripting.Dictionary")
 
-if IsEmpty(ob("userId")) Then
+if IsEmpty(ob("email")) Then
     jSuccess = false
     jMessage = "Lütfen tüm alanları doldurunuz"
     jStatus =  201
 Else
-    Dim sqll : sqll = "EXEC [spAddLecturer] @accessToken='" & accessToken & "', @userId='" & ob("userId") & "', @title='" & ob("title") & "', @faculty='" & ob("faculty") & "', @department='" & ob("department") & "', @program='" & ob("program") & "' "
+    Dim sqll : sqll = "EXEC [spAddLecturer] @accessToken='" & accessToken & "', @firstName='" & ob("firstName") & "', @lastName='" & ob("lastName") & "', @role='" & cleanGuid(ob("role")) & "', @phone='" & ob("phone") & "', @password='" & ob("password") & "', @email='" & ob("email") & "', @title='" & ob("title") & "', @programId='" & cleanGuid(ob("programId")) & "' "
+    jMessage = sqll
     Set rs = ba.Execute(sqll)
         if Not rs.eof Then
             if rs("success") = True Then

@@ -41,10 +41,15 @@ Dim jSuccess : jSuccess = True
 Dim jMessage : jMessage = ""
 Dim Results
 Set Results = Server.CreateObject("Scripting.Dictionary")
+Dim y
+Dim years(90)
+
+For y = 0 To 90
+    years(y) = Year(Date()) - y
+Next
 
 
-    Dim sqll : sqll = "EXEC [spAddLecture] @accessToken='" & accessToken & "', @name='" & ob("name") & "', @description='" & ob("description") & "', @code='" & ob("code") & "', @lecturer='" & cleanGuid(ob("lecturer")) & "', @program='" & cleanGuid(ob("program")) & "', @credits='" & ob("credits") & "', @semester='" & ob("semester") & "', @academicYear='" & ob("academicYear") & "' "
-    data.add "data", ba.Execute(sqll)    
+data.add "data", years
 
 
 

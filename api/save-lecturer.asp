@@ -43,13 +43,14 @@ Dim Results
 Set Results = Server.CreateObject("Scripting.Dictionary")
 
 
-    Dim sqll : sqll = "EXEC [spAddLecture] @accessToken='" & accessToken & "', @name='" & ob("name") & "', @description='" & ob("description") & "', @code='" & ob("code") & "', @lecturer='" & cleanGuid(ob("lecturer")) & "', @program='" & cleanGuid(ob("program")) & "', @credits='" & ob("credits") & "', @semester='" & ob("semester") & "', @academicYear='" & ob("academicYear") & "' "
-    data.add "data", ba.Execute(sqll)    
+    Dim sqll : sqll = "EXEC [spSaveLecturer] @accessToken='" & accessToken & "', @id='" & cleanGuid(ob("id")) & "', @userId='" & cleanGuid(ob("userId")) & "', @statusId='" & ob("statusId") & "', @firstName='" & ob("firstName") & "', @lastName='" & ob("lastName") & "', @roleId='" & cleanGuid(ob("roleId")) & "', @phone='" & ob("phone") & "', @email='" & ob("email") & "', @title='" & ob("title") & "', @programId='" & cleanGuid(ob("programId")) & "' "
+    
+    
 
 
 
 
-
+data.add "data", ba.Execute(sqll)
 data.add "success", jSuccess
 data.add "statusCode", jStatus
 data.add "processTime", dbDateTime(Now())

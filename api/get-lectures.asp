@@ -44,6 +44,7 @@ Set Results = Server.CreateObject("Scripting.Dictionary")
 
 
     Dim sqll : sqll = "EXEC [spGetLectures] @accessToken='" & accessToken & "' "
+    jMessage=sqll
     data.add "data", ba.Execute(sqll)    
 
 
