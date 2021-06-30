@@ -1,8 +1,5 @@
 <%
 Class VbsJson
-    'Author: Demon
-    'Date: 2012/5/3
-    'Website: http://demon.tw
     Private Whitespace, NumberRegex, StringChunk
     Private b, f, r, n, t
 

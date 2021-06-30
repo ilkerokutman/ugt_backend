@@ -43,16 +43,17 @@ Dim Results
 Set Results = Server.CreateObject("Scripting.Dictionary")
 
 
+Dim sqll
+    sqll = "EXEC [spGetAssignmentsAndDetails] @accessToken='" & accessToken & "' "
+if Not IsEmpty(ob("id")) Or Len(ob("id")) > 0 Then sqll = sqll & " , @id='" & cleanGuid(ob("id")) &  "' " 
+if Not IsEmpty(ob("studentId")) Or Len(ob("studentId")) > 0 Then sqll = sqll & " , @studentId='" & cleanGuid(ob("studentId")) &  "' " 
+if Not IsEmpty(ob("lectureId")) Or Len(ob("lectureId")) > 0 Then sqll = sqll & " , @lectureId='" & cleanGuid(ob("lectureId")) &  "' " 
+if Not IsEmpty(ob("lecturerId")) Or Len(ob("lecturerId")) > 0 Then sqll = sqll & " , @lecturerId='" & cleanGuid(ob("lecturerId")) &  "' " 
+if Not IsEmpty(ob("statusId")) Or Len(ob("statusId")) > 0 Then sqll = sqll & " , @statusId='" & (ob("statusId")) &  "' " 
+if Not IsEmpty(ob("isPool")) Or Len(ob("isPool")) > 0 Then sqll = sqll & " , @isPool='" & (ob("isPool")) &  "' " 
 
-    Dim sqll : sqll = "EXEC [spGetLectures] @accessToken='" & accessToken & "' "
-    if Not IsNull(ob("lecturerId")) And Not IsEmpty(ob("lecturerId")) And Len(ob("lecturerId")) > 0 Then 
-        sqll = sqll & ", @lecturerId='" & cleanGuid(ob("lecturerId")) & "' "
-    End if
-        if Not IsNull(ob("studentId")) And Not IsEmpty(ob("studentId")) And Len(ob("studentId")) > 0 Then 
-        sqll = sqll & ", @studentId='" & cleanGuid(ob("studentId")) & "' "
-    End if
-    jMessage=sqll
-    data.add "data", ba.Execute(sqll)    
+
+data.add "data", ba.Execute(sqll)    
 
 
 

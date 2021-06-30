@@ -44,12 +44,22 @@ Set Results = Server.CreateObject("Scripting.Dictionary")
 
 Dim isPool : isPool = ob("isPool")
 if isPool <> 1 Then isPool = 0
-Dim sqll
-if ob("id") = "" Then
-    sqll = "EXEC [spGetAssignments] @accessToken='" & accessToken & "', @isPool='" & isPool & "' "
-Else
-    sqll = "EXEC [spGetAssignments] @accessToken='" & accessToken & "', @isPool='" & isPool & "', @id='" & cleanGuid(ob("id")) & "' "
+Dim sqll : sqll = "EXEC [spGetAssignments] @accessToken='" & accessToken & "', @isPool='" & isPool & "' "
+
+if Not IsNull(ob("id")) And Not IsEmpty(ob("id")) And Len(ob("id"))>0 Then
+    sqll = sqll & ", @id='" & cleanGuid(ob("id")) & "' "
 End if
+
+if Not IsNull(ob("lecturerId")) And Not IsEmpty(ob("lecturerId")) And Len(ob("lecturerId"))>0 Then
+    sqll = sqll & ", @lecturerId='" & cleanGuid(ob("lecturerId")) & "' "
+End if
+
+if Not IsNull(ob("studentId")) And Not IsEmpty(ob("studentId")) And Len(ob("studentId"))>0 Then
+    sqll = sqll & ", @studentId='" & cleanGuid(ob("studentId")) & "' "
+End if
+
+
+
 data.add "data", ba.Execute(sqll)    
 
 

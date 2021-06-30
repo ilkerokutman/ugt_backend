@@ -42,13 +42,8 @@ Dim jMessage : jMessage = ""
 Dim Results
 Set Results = Server.CreateObject("Scripting.Dictionary")
 
-
     Dim sqll : sqll = "EXEC [spGetFacultyList] @accessToken='" & accessToken & "' "
     data.add "data", ba.Execute(sqll)    
-
-
-
-
 
 data.add "success", jSuccess
 data.add "statusCode", jStatus
